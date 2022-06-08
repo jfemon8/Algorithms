@@ -25,16 +25,19 @@ void insert(int data)
         newnode->prev=temp;
         temp=newnode;
     }
+    printf("\nData inserted successfully.\n\n");
 }
 
 void print()
 {
+    printf("\nThe list is: ");
     temp1=head;
     while(temp1!=0)
     {
         printf("%d ", temp1->data);
         temp1=temp1->next;
     }
+    printf("\n\n");
 }
 
 void search(int sdata)
@@ -46,7 +49,7 @@ void search(int sdata)
         if(temp2->data==sdata)
         {
             temp2=temp2->next;
-            printf("\nItem found.");
+            printf("\nItem found.\n\n");
             flag=1;
         }
         else
@@ -55,7 +58,7 @@ void search(int sdata)
         }
     }
     if(flag==0)
-        printf("\nItem not found.");
+        printf("\nItem not found.\n\n");
 }
 
 void del(int rdata)
@@ -91,29 +94,40 @@ void del(int rdata)
 
 int main()
 {
-    int i, n, m, x, y;
-    printf("How many data do you want to insert: ");
-    scanf("%d", &n);
-    for(i=1; i<=n; i++)
+    int choice, value;
+    printf("Select an option from below.\n");
+    while (1)
     {
-        printf("\nEnter the node %d: ", i);
-        scanf("%d", &m);
-        insert(m);
+        printf("1. Insert\n2. Search\n3. Delete\n4. Print\n5. Exit\n");
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            printf("\nEnter the value to insert: ");
+            scanf("%d", &value);
+            insert(value);
+            break;
+        case 2:
+            printf("\nEnter the value to search: ");
+            scanf("%d", &value);
+            search(value);
+            break;
+        case 3:
+            printf("\nEnter the value to delete: ");
+            scanf("%d", &value);
+            del(value);
+            printf("\nData deleted successfully.\n\n");
+            break;
+        case 4:
+            print();
+            break;
+        case 5:
+            exit(0);
+            break;
+        default:
+            printf("\nWrong Choice\n\n");
+        }
     }
-    printf("\nHere is the list: ");
-    print();
-    printf("\n");
-
-    printf("\nEnter data which you want to search: ");
-    scanf("%d", &x);
-    search(x);
-    printf("\n");
-
-    printf("\nEnter data which you want to delete from the list: ");
-    scanf("%d", &y);
-    del(y);
-    printf("\nThe new list is: ");
-    print();
-    printf("\n");
 }
 

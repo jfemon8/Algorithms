@@ -41,23 +41,39 @@ int main()
             }
         }
     }
-
-    cout << endl
-         << "Output: " << endl;
+    bool cycle = false;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        if (adj[i][i] < 0)
         {
-            if (adj[i][j] == INT_MAX)
-            {
-                cout << "INF ";
-            }
-            else
-            {
-                cout << adj[i][j] << "   ";
-            }
+            cycle = true;
+            break;
         }
-        cout << endl;
+    }
+    if (cycle)
+    {
+        cout << endl
+             << "Negative cycle detected!" << endl;
+    }
+    else
+    {
+        cout << endl
+             << "Output: " << endl;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (adj[i][j] == INT_MAX)
+                {
+                    cout << "INF ";
+                }
+                else
+                {
+                    cout << adj[i][j] << "   ";
+                }
+            }
+            cout << endl;
+        }
     }
 
     return 0;

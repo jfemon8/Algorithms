@@ -9,7 +9,7 @@ void initialize(int n)
 {
     for (int i = 0; i < n; i++)
     {
-        par[i] = -1;
+        par[i] = i;
         group_size[i] = 1;
         level[i] = 0;
     }
@@ -17,7 +17,7 @@ void initialize(int n)
 
 int find(int node)
 {
-    if (par[node] == -1)
+    if (par[node] == node)
     {
         return node;
     }
